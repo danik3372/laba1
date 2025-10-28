@@ -1,0 +1,955 @@
+/* Определение CSS-переменных (кастомных свойств) для цветов, теней, скруглений и анимаций */
+:root {
+  /* Цветовая палитра */
+  --primary: #2563eb;         /* Основной синий цвет */
+  --primary-dark: #1d4ed8;    /* Темный вариант основного цвета */
+  --secondary: #f59e0b;       /* Вторичный оранжевый цвет */
+  --dark: #1e293b;            /* Темный цвет текста */
+  --darker: #0f172a;          /* Еще более темный цвет */
+  --light: #f8fafc;           /* Светлый фон */
+  --gray: #94a3b8;            /* Серый цвет */
+  --gray-light: #e2e8f0;      /* Светло-серый цвет */
+  
+  /* Тени */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);               /* Маленькая тень */
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),                /* Средняя тень */
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1),           /* Большая тень */
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  
+  /* Скругления углов */
+  --rounded-sm: 0.125rem;     /* Маленькое скругление (2px) */
+  --rounded: 0.25rem;         /* Среднее скругление (4px) */
+  --rounded-md: 0.375rem;     /* Средне-большое скругление (6px) */
+  --rounded-lg: 0.5rem;       /* Большое скругление (8px) */
+  
+  /* Анимации */
+  --transition: all 0.2s ease-in-out;  /* Стандартный переход для hover-эффектов */
+}
+
+/* Сброс стандартных стилей браузера */
+* {
+  margin: 0;                  /* Убираем внешние отступы */
+  padding: 0;                 /* Убираем внутренние отступы */
+  box-sizing: border-box;     /* Паддинги и бордеры включаются в расчет ширины */
+}
+
+/* Основные стили для body */
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;  /* Шрифты */
+  line-height: 1.5;           /* Межстрочный интервал */
+  color: var(--dark);         /* Цвет текста */
+  background-color: var(--light);  /* Цвет фона */
+  padding-top: 136px;         /* Отступ сверху для фиксированного хедера */
+}
+
+/* Контейнер для центрирования контента */
+.container {
+  width: 100%;                /* На всю ширину */
+  max-width: 1280px;          /* Максимальная ширина */
+  margin: 0 auto;             /* Центрирование по горизонтали */
+  padding: 0 1.5rem;          /* Отступы по бокам */
+}
+
+/* Верхняя панель (информационная строка) */
+.top-bar {
+  background-color: var(--darker);  /* Темный фон */
+  color: var(--light);        /* Светлый текст */
+  padding: 0.5rem 0;          /* Вертикальные отступы */
+  position: fixed;            /* Фиксированное позиционирование */
+  top: 0;                     /* Прижато к верху */
+  width: 100%;                /* На всю ширину */
+  z-index: 50;                /* Уровень слоя */
+  box-shadow: var(--shadow);  /* Тень */
+}
+
+/* Содержимое верхней панели */
+.top-bar-content {
+  display: flex;              /* Флекс-контейнер */
+  justify-content: space-between;  /* Распределение пространства между элементами */
+  align-items: center;        /* Выравнивание по центру по вертикали */
+}
+
+/* Контактная информация */
+.contact-info {
+  display: flex;              /* Флекс-контейнер */
+  gap: 1.5rem;               /* Расстояние между элементами */
+  flex-wrap: wrap;            /* Перенос на новую строку при нехватке места */
+}
+
+/* Отдельный элемент контактной информации */
+.contact-info span {
+  display: inline-flex;       /* Строчно-блочный флекс */
+  align-items: center;        /* Выравнивание по центру по вертикали */
+  gap: 0.5rem;               /* Расстояние между иконкой и текстом */
+  font-size: 0.875rem;       /* Размер шрифта (14px) */
+  color: var(--gray-light);  /* Цвет текста */
+  transition: var(--transition);  /* Анимация при наведении */
+}
+
+/* Правая часть верхней панели */
+.top-bar-right {
+  display: flex;              /* Флекс-контейнер */
+  align-items: center;        /* Выравнивание по центру по вертикали */
+  gap: 1.5rem;               /* Расстояние между элементами */
+}
+
+/* Социальные ссылки */
+.social-links {
+  display: flex;              /* Флекс-контейнер */
+  gap: 1rem;                 /* Расстояние между иконками */
+}
+
+/* Стили для ссылок соцсетей */
+.social-links a {
+  color: var(--gray-light);  /* Цвет иконок */
+  transition: var(--transition);  /* Анимация при наведении */
+  font-size: 1rem;           /* Размер иконок */
+}
+
+/* Эффект при наведении на соцсети */
+.social-links a:hover {
+  color: var(--secondary);    /* Изменение цвета */
+  transform: translateY(-2px);  /* Сдвиг вверх */
+}
+
+/* Действия пользователя (вход, корзина) */
+.user-actions {
+  display: flex;              /* Флекс-контейнер */
+  align-items: center;        /* Выравнивание по центру по вертикали */
+  gap: 1rem;                 /* Расстояние между элементами */
+}
+
+/* Ссылки в действиях пользователя */
+.user-actions a {
+  color: var(--gray-light);  /* Цвет текста */
+  text-decoration: none;     /* Убираем подчеркивание */
+  font-size: 0.9rem;         /* Размер шрифта */
+  transition: var(--transition);  /* Анимация при наведении */
+  display: flex;             /* Флекс-контейнер */
+  align-items: center;       /* Выравнивание по центру по вертикали */
+  gap: 0.25rem;             /* Расстояние между иконкой и текстом */
+}
+
+/* Эффект при наведении на ссылки */
+.user-actions a:hover {
+  color: white;              /* Изменение цвета текста */
+}
+
+/* Кнопка корзины */
+.cart-btn {
+  position: relative;         /* Для позиционирования счетчика */
+}
+
+/* Счетчик товаров в корзине */
+.cart-count {
+  position: absolute;         /* Абсолютное позиционирование */
+  top: -5px;                 /* Сдвиг вверх */
+  right: -8px;               /* Сдвиг вправо */
+  background-color: var(--primary);  /* Цвет фона */
+  color: white;              /* Цвет текста */
+  border-radius: 50%;        /* Круглая форма */
+  width: 18px;              /* Ширина */
+  height: 18px;             /* Высота */
+  display: flex;             /* Флекс-контейнер */
+  align-items: center;       /* Выравнивание по центру по вертикали */
+  justify-content: center;   /* Выравнивание по центру по горизонтали */
+  font-size: 0.65rem;       /* Размер шрифта */
+  font-weight: 600;         /* Жирный шрифт */
+}
+
+/* Основной хедер */
+.main-header {
+  background-color: white;    /* Белый фон */
+  position: fixed;           /* Фиксированное позиционирование */
+  top: 44px;                 /* Отступ сверху (под верхней панелью) */
+  width: 100%;               /* На всю ширину */
+  z-index: 100;              /* Уровень слоя выше верхней панели */
+  box-shadow: var(--shadow-sm);  /* Тень */
+  border-bottom: 1px solid var(--gray-light);  /* Граница снизу */
+}
+
+/* Контейнер основного хедера */
+.main-header .container {
+  display: flex;              /* Флекс-контейнер */
+  justify-content: space-between;  /* Распределение пространства */
+  align-items: center;        /* Выравнивание по центру по вертикали */
+  padding: 1rem 1.5rem;      /* Внутренние отступы */
+}
+
+/* Логотип */
+.logo a {
+  font-size: 1.5rem;         /* Размер шрифта */
+  font-weight: 700;          /* Жирный шрифт */
+  color: var(--darker);      /* Цвет текста */
+  text-decoration: none;     /* Убираем подчеркивание */
+  display: flex;             /* Флекс-контейнер */
+  align-items: center;       /* Выравнивание по центру по вертикали */
+  gap: 0.25rem;             /* Расстояние между элементами */
+}
+
+/* Часть логотипа с акцентом */
+.logo span {
+  color: var(--primary);     /* Синий цвет */
+}
+
+/* Поле поиска */
+.search-box {
+  display: flex;              /* Флекс-контейнер */
+  align-items: center;        /* Выравнивание по центру по вертикали */
+  flex-grow: 1;              /* Растягивается на доступное пространство */
+  max-width: 400px;          /* Максимальная ширина */
+  margin: 0 1.5rem;          /* Отступы по бокам */
+}
+
+/* Поле ввода поиска */
+.search-box input {
+  width: 100%;               /* На всю ширину контейнера */
+  padding: 0.5rem 1rem;     /* Внутренние отступы */
+  border: 1px solid var(--gray-light);  /* Граница */
+  border-radius: var(--rounded-md) 0 0 var(--rounded-md);  /* Скругление слева */
+  font-size: 0.9rem;        /* Размер шрифта */
+  border-right: none;       /* Убираем правую границу */
+}
+
+/* Кнопка поиска */
+.search-box button {
+  padding: 0.5rem 1rem;     /* Внутренние отступы */
+  background-color: var(--primary);  /* Цвет фона */
+  color: white;              /* Цвет текста */
+  border: none;              /* Убираем границу */
+  border-radius: 0 var(--rounded-md) var(--rounded-md) 0;  /* Скругление справа */
+  cursor: pointer;           /* Курсор-указатель */
+  transition: var(--transition);  /* Анимация при наведении */
+}
+
+/* Эффект при наведении на кнопку поиска */
+.search-box button:hover {
+  background-color: var(--primary-dark);  /* Темнее фон */
+}
+
+/* Главное меню навигации */
+.main-nav {
+  position: relative;        /* Относительное позиционирование */
+  left: 90;                  /* Сдвиг вправо (некорректное значение) */
+  top: 100%;                 /* Позиционирование под хедером */
+  width: 110%;               /* Ширина больше родителя */
+  background-color: white;   /* Белый фон */
+  box-shadow: var(--shadow-md);  /* Тень */
+  display: block;            /* Отображение (изменено с none для демонстрации) */
+  z-index: 100;              /* Уровень слоя */
+}
+
+/* Сетка меню */
+.menu-grid {
+  display: grid;             /* Грид-контейнер */
+  grid-template-columns: repeat(4, minmax(0, 1fr));  /* 4 колонки */
+  gap: 2rem;                /* Расстояние между колонками */
+  padding: 1.5rem;          /* Внутренние отступы */
+  border-top: 1px solid var(--gray-light);  /* Граница сверху */
+}
+
+/* Колонка меню */
+.menu-column {
+  min-width: 200px;         /* Минимальная ширина */
+}
+
+/* Категория меню */
+.menu-category {
+  font-size: 1rem;          /* Размер шрифта */
+  font-weight: 600;         /* Жирный шрифт */
+  color: var(--darker);     /* Цвет текста */
+  margin-bottom: 1rem;      /* Отступ снизу */
+  padding-bottom: 0.5rem;   /* Отступ снизу для границы */
+  border-bottom: 2px solid var(--primary);  /* Граница снизу */
+  display: flex;            /* Флекс-контейнер */
+  align-items: center;      /* Выравнивание по центру по вертикали */
+  gap: 0.5rem;             /* Расстояние между элементами */
+}
+
+/* Декоративный элемент перед категорией */
+.menu-category::before {
+  content: "";              /* Псевдоэлемент */
+  display: block;           /* Блочное отображение */
+  width: 0.5rem;           /* Ширина */
+  height: 0.5rem;          /* Высота */
+  background-color: var(--primary);  /* Цвет */
+  border-radius: 50%;       /* Круглая форма */
+}
+
+/* Группа пунктов меню */
+.menu-group {
+  margin-bottom: 1rem;      /* Отступ снизу */
+}
+
+/* Пункт меню и кнопка меню */
+.menu-item,
+.menu-item-btn {
+  display: flex;            /* Флекс-контейнер */
+  align-items: center;      /* Выравнивание по центру по вертикали */
+  width: 100%;              /* На всю ширину */
+  color: var(--dark);       /* Цвет текста */
+  text-decoration: none;    /* Убираем подчеркивание */
+  padding: 0.5rem 0;       /* Вертикальные отступы */
+  font-size: 0.95rem;      /* Размер шрифта */
+  transition: var(--transition);  /* Анимация при наведении */
+  border-radius: var(--rounded-sm);  /* Скругление углов */
+}
+
+/* Эффект при наведении на пункт меню */
+.menu-item:hover {
+  color: var(--primary);    /* Изменение цвета текста */
+  background-color: rgba(37, 99, 235, 0.05);  /* Полупрозрачный фон */
+  padding-left: 0.5rem;    /* Сдвиг текста вправо */
+}
+
+/* Кнопка меню (для подменю) */
+.menu-item-btn {
+  background: none;         /* Прозрачный фон */
+  border: none;             /* Убираем границу */
+  cursor: pointer;          /* Курсор-указатель */
+  justify-content: space-between;  /* Распределение пространства */
+  position: relative;       /* Для позиционирования иконки */
+  text-align: left;         /* Выравнивание текста по левому краю */
+  padding-right: 1.5rem;    /* Отступ справа для иконки */
+}
+
+/* Эффект при наведении на кнопку меню */
+.menu-item-btn:hover {
+  color: var(--primary);    /* Изменение цвета текста */
+}
+
+/* Иконка в кнопке меню */
+.menu-item-btn i {
+  position: absolute;       /* Абсолютное позиционирование */
+  right: 0;                /* Прижатие к правому краю */
+  font-size: 0.75rem;      /* Размер иконки */
+  transition: var(--transition);  /* Анимация при наведении */
+}
+
+/* Пункт меню с подменю */
+.menu-item-with-submenu {
+  position: relative;       /* Для позиционирования подменю */
+}
+
+/* Выпадающее подменю */
+.submenu-dropdown {
+  display: none;            /* Скрыто по умолчанию */
+  position: absolute;       /* Абсолютное позиционирование */
+  left: 0;                 /* Прижатие к левому краю */
+  top: 100%;               /* Позиционирование под пунктом меню */
+  background: white;       /* Белый фон */
+  min-width: 200px;        /* Минимальная ширина */
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);  /* Тень */
+  z-index: 100;            /* Уровень слоя */
+  padding: 10px;           /* Внутренние отступы */
+  border-radius: 4px;      /* Скругление углов */
+}
+
+/* Отображение подменю при активном состоянии */
+.menu-item-btn.active + .submenu-dropdown {
+  display: block;          /* Отображаем подменю */
+}
+
+/* Пункт подменю */
+.submenu-item {
+  display: block;          /* Блочное отображение */
+  padding: 8px 12px;      /* Внутренние отступы */
+  color: #333;            /* Цвет текста */
+  text-decoration: none;  /* Убираем подчеркивание */
+}
+
+/* Эффект при наведении на пункт подменю */
+.submenu-item:hover {
+  background: #f5f5f5;    /* Светло-серый фон */
+}
+
+/* Поворот иконки при активном состоянии */
+.menu-item-btn.active i {
+  transform: rotate(180deg);  /* Поворот на 180 градусов */
+}
+
+/* Кнопка бургер-меню (для мобильной версии) */
+.burger {
+  display: none;            /* Скрыто по умолчанию */
+  background: none;         /* Прозрачный фон */
+  border: none;             /* Убираем границу */
+  cursor: pointer;          /* Курсор-указатель */
+  padding: 0.5rem;         /* Внутренние отступы */
+  flex-direction: column;   /* Элементы в колонку */
+  justify-content: space-between;  /* Распределение пространства */
+  width: 2rem;             /* Ширина */
+  height: 1.5rem;          /* Высота */
+  z-index: 60;             /* Уровень слоя */
+}
+
+/* Полоски бургер-меню */
+.burger span {
+  display: block;          /* Блочное отображение */
+  height: 2px;            /* Высота полоски */
+  width: 100%;            /* Ширина на всю кнопку */
+  background-color: var(--dark);  /* Цвет полоски */
+  border-radius: 1px;     /* Скругление углов */
+  transition: var(--transition);  /* Анимация */
+  transform-origin: center;  /* Точка трансформации */
+}
+
+/* Анимация бургер-меню в активном состоянии */
+.burger.active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);  /* Поворот верхней полоски */
+}
+
+.burger.active span:nth-child(2) {
+  opacity: 0;             /* Исчезновение средней полоски */
+}
+
+.burger.active span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);  /* Поворот нижней полоски */
+}
+
+/* Мобильное меню */
+.mobile-menu {
+  position: fixed;         /* Фиксированное позиционирование */
+  top: 80px;               /* Отступ сверху */
+  left: 0;                 /* Прижатие к левому краю */
+  width: 100%;             /* На всю ширину */
+  height: calc(100vh - 80px);  /* Высота на оставшееся пространство */
+  background-color: white; /* Белый фон */
+  z-index: 50;             /* Уровень слоя */
+  transform: translateY(-150%);  /* Скрытие за верхним краем */
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);  /* Анимация */
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);  /* Тень */
+  overflow-y: auto;        /* Вертикальный скролл при необходимости */
+  display: none;           /* Скрыто по умолчанию */
+}
+
+/* Отображение мобильного меню в активном состоянии */
+.mobile-menu.active {
+  transform: translateY(0);  /* Возвращение на место */
+  display: block;          /* Отображение */
+}
+
+/* Внутренний контейнер мобильного меню */
+.mobile-menu-inner {
+  padding: 1.5rem;         /* Внутренние отступы */
+}
+
+/* Контент мобильного меню */
+.mobile-menu-content {
+  display: flex;           /* Флекс-контейнер */
+  flex-direction: column;  /* Элементы в колонку */
+  gap: 1rem;              /* Расстояние между элементами */
+}
+
+/* Секция мобильного меню */
+.mobile-menu-section {
+  border-bottom: 1px solid var(--gray-light);  /* Граница снизу */
+  padding-bottom: 1rem;    /* Отступ снизу */
+}
+
+/* Кнопки мобильного меню разных уровней */
+.mobile-menu-btn,
+.mobile-submenu-btn,
+.mobile-subsubmenu-btn {
+  width: 100%;             /* На всю ширину */
+  background: none;        /* Прозрачный фон */
+  border: none;            /* Убираем границу */
+  padding: 0.75rem 0;     /* Вертикальные отступы */
+  text-align: left;        /* Выравнивание текста по левому краю */
+  font-size: 1rem;        /* Размер шрифта */
+  color: var(--dark);     /* Цвет текста */
+  display: flex;          /* Флекс-контейнер */
+  justify-content: space-between;  /* Распределение пространства */
+  align-items: center;    /* Выравнивание по центру по вертикали */
+  cursor: pointer;        /* Курсор-указатель */
+}
+
+/* Иконки в кнопках мобильного меню */
+.mobile-menu-btn i,
+.mobile-submenu-btn i,
+.mobile-subsubmenu-btn i {
+  font-size: 0.75rem;     /* Размер иконки */
+  transition: var(--transition);  /* Анимация */
+}
+
+/* Подменю разных уровней */
+.mobile-submenu,
+.mobile-subsubmenu,
+.mobile-subsubsubmenu {
+  display: none;           /* Скрыто по умолчанию */
+  padding-left: 1rem;      /* Отступ слева */
+  margin-top: 0.5rem;     /* Отступ сверху */
+}
+
+/* Отображение подменю при активном состоянии */
+.mobile-menu-section.active .mobile-submenu,
+.mobile-submenu-btn.active + .mobile-subsubmenu,
+.mobile-subsubmenu-btn.active + .mobile-subsubsubmenu {
+  display: flex;           /* Флекс-контейнер */
+  flex-direction: column;  /* Элементы в колонку */
+  gap: 0.5rem;           /* Расстояние между элементами */
+}
+
+/* Ссылка в мобильном меню */
+.mobile-menu-link {
+  display: block;          /* Блочное отображение */
+  padding: 0.5rem 0;      /* Вертикальные отступы */
+  color: var(--dark);     /* Цвет текста */
+  text-decoration: none;  /* Убираем подчеркивание */
+  font-size: 0.9rem;     /* Размер шрифта */
+}
+
+/* Футер мобильного меню */
+.mobile-menu-footer {
+  margin-top: 2rem;        /* Отступ сверху */
+  padding-top: 1rem;       /* Отступ сверху */
+  border-top: 1px solid var(--gray-light);  /* Граница сверху */
+}
+
+/* Контакты в мобильном меню */
+.mobile-contacts {
+  display: flex;           /* Флекс-контейнер */
+  flex-direction: column;  /* Элементы в колонку */
+  gap: 0.75rem;           /* Расстояние между элементами */
+}
+
+/* Ссылки контактов */
+.mobile-contacts a {
+  color: var(--dark);      /* Цвет текста */
+  text-decoration: none;   /* Убираем подчеркивание */
+  font-size: 0.875rem;    /* Размер шрифта */
+  display: flex;          /* Флекс-контейнер */
+  align-items: center;    /* Выравнивание по центру по вертикали */
+  gap: 0.5rem;           /* Расстояние между иконкой и текстом */
+}
+
+/* Социальные иконки в мобильном меню */
+.mobile-social {
+  display: flex;           /* Флекс-контейнер */
+  justify-content: center; /* Центрирование по горизонтали */
+  gap: 1.5rem;            /* Расстояние между иконками */
+  margin-top: 1.5rem;     /* Отступ сверху */
+}
+
+/* Ссылки социальных иконок */
+.mobile-social a {
+  color: var(--dark);      /* Цвет иконок */
+  font-size: 1.25rem;     /* Размер иконок */
+}
+
+/* Основное содержимое страницы */
+.content {
+  padding: 3rem 0;        /* Вертикальные отступы */
+}
+
+/* Адаптивность для экранов до 1024px */
+@media (max-width: 1024px) {
+  .menu-grid {
+    grid-template-columns: repeat(2, 1fr);  /* 2 колонки вместо 4 */
+  }
+}
+
+/* Адаптивность для экранов до 768px (планшеты) */
+@media (max-width: 768px) {
+  body {
+    padding-top: 120px;    /* Уменьшаем отступ сверху */
+  }
+
+  .top-bar {
+    height: 40px;         /* Уменьшаем высоту верхней панели */
+  }
+
+  .main-header {
+    top: 40px;            /* Корректируем позицию основного хедера */
+  }
+
+  .main-nav {
+    display: none !important;  /* Скрываем основное меню */
+  }
+
+  .search-box {
+    display: none;        /* Скрываем поле поиска */
+  }
+
+  .burger {
+    display: flex;        /* Показываем бургер-меню */
+  }
+
+  .mobile-menu {
+    top: 80px;            /* Корректируем позицию мобильного меню */
+    height: calc(100vh - 80px);  /* Корректируем высоту */
+  }
+
+  .contact-info span {
+    font-size: 0.75rem;   /* Уменьшаем размер шрифта */
+  }
+}
+
+/* Адаптивность для экранов до 480px (мобильные) */
+@media (max-width: 480px) {
+  .top-bar-content {
+    flex-direction: column;  /* Элементы в колонку */
+    gap: 0.5rem;           /* Расстояние между элементами */
+  }
+
+  .contact-info {
+    justify-content: center;  /* Центрирование контактов */
+  }
+
+  .top-bar-right {
+    justify-content: center;  /* Центрирование правой части */
+  }
+
+  .contact-info span {
+    font-size: 0.7rem;    /* Еще меньше размер шрифта */
+  }
+}
+
+/* Дополнительные улучшенные стили для меню */
+.menu-item, .submenu-item {
+  transition: all 0.2s ease;  /* Анимация */
+  padding: 0.5rem 1rem;     /* Внутренние отступы */
+  border-radius: var(--rounded-sm);  /* Скругление углов */
+}
+
+/* Эффект при наведении */
+.menu-item:hover, .submenu-item:hover {
+  background-color: rgba(37, 99, 235, 0.1);  /* Полупрозрачный фон */
+  color: var(--primary);    /* Изменение цвета текста */
+}
+
+/* Выпадающее подменю */
+.submenu-dropdown {
+  min-width: 250px;        /* Минимальная ширина */
+  padding: 0.75rem;        /* Внутренние отступы */
+  border: 1px solid var(--gray-light);  /* Граница */
+}
+
+/* Пункт подменю */
+.submenu-item {
+  display: block;          /* Блочное отображение */
+  padding: 0.5rem 0.75rem;  /* Внутренние отступы */
+  margin: 0.25rem 0;      /* Внешние отступы */
+  color: var(--dark);     /* Цвет текста */
+}
+
+/* Эффект при наведении на пункт подменю */
+.submenu-item:hover {
+  background-color: rgba(37, 99, 235, 0.05);  /* Полупрозрачный фон */
+}
+
+/* Ссылка в мобильном меню */
+.mobile-menu-link {
+  padding: 0.75rem 1rem;   /* Внутренние отступы */
+  border-radius: var(--rounded-sm);  /* Скругление углов */
+  margin: 0.25rem 0;      /* Внешние отступы */
+}
+
+/* Эффект при наведении на ссылку */
+.mobile-menu-link:hover {
+  background-color: rgba(37, 99, 235, 0.1);  /* Полупрозрачный фон */
+}
+
+/* Анимации */
+@keyframes slideDown {
+  from {
+    opacity: 0;           /* Начальная прозрачность */
+    transform: translateY(-10px);  /* Сдвиг вверх */
+  }
+  to {
+    opacity: 1;           /* Полная видимость */
+    transform: translateY(0);  /* Возвращение на место */
+  }
+}
+
+/* Применение анимации к выпадающим меню */
+.submenu-dropdown, .submenu-subdropdown {
+  animation: slideDown 0.2s ease-out;  /* Анимация появления */
+}
+
+/* Секция героя (главный баннер) */
+.hero-section {
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+              url('https://via.placeholder.com/1920x600?text=MarketPlace');  /* Затемненное фоновое изображение */
+  background-size: cover;   /* Растягиваем на всю область */
+  background-position: center;  /* Центрируем */
+  color: white;            /* Белый текст */
+  padding: 100px 0;       /* Большие отступы */
+  text-align: center;      /* Выравнивание по центру */
+  margin-bottom: 50px;    /* Отступ снизу */
+}
+
+/* Контент героя */
+.hero-content {
+  max-width: 800px;        /* Максимальная ширина */
+  margin: 0 auto;          /* Центрирование */
+}
+
+/* Заголовок героя */
+.hero-content h1 {
+  font-size: 3rem;        /* Большой размер шрифта */
+  margin-bottom: 20px;    /* Отступ снизу */
+}
+
+/* Текст героя */
+.hero-content p {
+  font-size: 1.2rem;      /* Размер шрифта */
+  margin-bottom: 30px;    /* Отступ снизу */
+}
+
+/* Кнопка героя */
+.btn-hero {
+  background-color: #ff6b6b;  /* Красный фон */
+  color: white;            /* Белый текст */
+  padding: 12px 30px;     /* Внутренние отступы */
+  border-radius: 30px;     /* Скругление углов */
+  font-size: 1.1rem;      /* Размер шрифта */
+  font-weight: bold;       /* Жирный шрифт */
+  text-transform: uppercase;  /* Верхний регистр */
+  transition: all 0.3s;   /* Анимация */
+}
+
+/* Эффект при наведении на кнопку */
+.btn-hero:hover {
+  background-color: #ff5252;  /* Темнее фон */
+  transform: translateY(-3px);  /* Сдвиг вверх */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);  /* Тень */
+}
+
+/* Промо-секция */
+.promo-section {
+  padding: 60px 0;        /* Вертикальные отступы */
+  background-color: #f9f9f9;  /* Светлый фон */
+}
+
+/* Заголовок секции */
+.section-title {
+  text-align: center;      /* Выравнивание по центру */
+  margin-bottom: 50px;    /* Отступ снизу */
+  font-size: 2.2rem;      /* Размер шрифта */
+  color: #333;            /* Цвет текста */
+}
+
+/* Контейнер промо-карточек */
+.promo-cards {
+  display: flex;           /* Флекс-контейнер */
+  justify-content: space-between;  /* Распределение пространства */
+  flex-wrap: wrap;         /* Перенос на новую строку */
+  gap: 30px;              /* Расстояние между карточками */
+}
+
+/* Промо-карточка */
+.promo-card {
+  background: white;       /* Белый фон */
+  border-radius: 10px;     /* Скругление углов */
+  overflow: hidden;        /* Скрытие выходящего за границы */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);  /* Тень */
+  flex: 1 1 300px;        /* Гибкая ширина */
+  transition: transform 0.3s;  /* Анимация */
+}
+
+/* Эффект при наведении на карточку */
+.promo-card:hover {
+  transform: translateY(-10px);  /* Сдвиг вверх */
+}
+
+/* Изображение в карточке */
+.promo-image {
+  height: 200px;          /* Фиксированная высота */
+  background-size: cover;  /* Растягиваем изображение */
+  background-position: center;  /* Центрируем */
+}
+
+/* Контент карточки */
+.promo-content {
+  padding: 20px;          /* Внутренние отступы */
+}
+
+/* Заголовок карточки */
+.promo-title {
+  font-size: 1.5rem;      /* Размер шрифта */
+  margin-bottom: 10px;    /* Отступ снизу */
+  color: #333;            /* Цвет текста */
+}
+
+/* Текст карточки */
+.promo-text {
+  color: #666;            /* Серый текст */
+  margin-bottom: 20px;    /* Отступ снизу */
+}  
+/* Стили для бейджа промо-акции */
+.promo-badge {
+  display: inline-block;       /* Строчно-блочный элемент */
+  background-color: #ff6b6b;  /* Красный цвет фона */
+  color: white;               /* Белый текст */
+  padding: 5px 10px;          /* Внутренние отступы */
+  border-radius: 5px;         /* Скругление углов */
+  font-weight: bold;          /* Жирный шрифт */
+  margin-bottom: 15px;        /* Отступ снизу */
+}
+
+/* Стили для подвала (футера) */
+footer {
+  background-color: #2c3e50;  /* Темно-синий цвет фона */
+  color: white;               /* Белый текст */
+  padding: 60px 0 20px;       /* Отступы: сверху-снизу 60px, снизу 20px */
+}
+
+/* Контейнер содержимого футера */
+.footer-content {
+  display: flex;              /* Флекс-контейнер */
+  flex-wrap: wrap;            /* Перенос на новую строку при нехватке места */
+  justify-content: space-between;  /* Равномерное распределение пространства */
+  gap: 40px;                  /* Расстояние между колонками */
+  margin-bottom: 40px;        /* Отступ снизу */
+}
+
+/* Колонка футера */
+.footer-column {
+  flex: 1 1 250px;            /* Гибкая ширина, минимальная 250px */
+}
+
+/* Заголовок колонки футера */
+.footer-column h3 {
+  font-size: 1.3rem;          /* Размер шрифта */
+  margin-bottom: 20px;        /* Отступ снизу */
+  position: relative;         /* Для псевдоэлемента */
+  padding-bottom: 10px;       /* Отступ снизу для декоративной линии */
+}
+
+/* Декоративная линия под заголовком */
+.footer-column h3::after {
+  content: '';                /* Обязательно для псевдоэлемента */
+  position: absolute;         /* Абсолютное позиционирование */
+  left: 0;                    /* Прижатие к левому краю */
+  bottom: 0;                  /* Позиционирование снизу */
+  width: 50px;               /* Ширина линии */
+  height: 2px;               /* Высота линии */
+  background-color: #ff6b6b;  /* Красный цвет линии */
+}
+
+/* Текст и ссылки в колонке футера */
+.footer-column p, 
+.footer-column a {
+  color: #ecf0f1;            /* Светло-серый цвет текста */
+  margin-bottom: 10px;       /* Отступ снизу */
+  display: block;            /* Блочное отображение */
+  transition: color 0.3s;    /* Анимация изменения цвета */
+}
+
+/* Эффект при наведении на ссылку */
+.footer-column a:hover {
+  color: #ff6b6b;            /* Красный цвет при наведении */
+}
+
+/* Контейнер социальных иконок */
+.footer-social {
+  display: flex;              /* Флекс-контейнер */
+  gap: 15px;                 /* Расстояние между иконками */
+  margin-top: 20px;          /* Отступ сверху */
+}
+
+/* Ссылка социальной иконки */
+.footer-social a {
+  background-color: #34495e;  /* Темный фон */
+  width: 40px;               /* Фиксированная ширина */
+  height: 40px;              /* Фиксированная высота */
+  border-radius: 50%;        /* Круглая форма */
+  display: flex;             /* Флекс-контейнер */
+  align-items: center;       /* Центрирование по вертикали */
+  justify-content: center;   /* Центрирование по горизонтали */
+  transition: all 0.3s;      /* Анимация всех свойств */
+}
+
+/* Эффект при наведении на социальную иконку */
+.footer-social a:hover {
+  background-color: #ff6b6b;  /* Красный фон */
+  transform: translateY(-3px);  /* Сдвиг вверх */
+}
+
+/* Нижняя часть футера (копирайт) */
+.footer-bottom {
+  text-align: center;        /* Выравнивание по центру */
+  padding-top: 20px;         /* Отступ сверху */
+  border-top: 1px solid #34495e;  /* Граница сверху */
+  color: #bdc3c7;           /* Серый цвет текста */
+  font-size: 0.9rem;        /* Размер шрифта */
+}
+/* Стили для поисковой формы */
+.search-form {
+  display: flex; /* Делаем контейнер flex-контейнером */
+  align-items: center; /* Выравниваем элементы по центру по вертикали */
+  position: relative;  /* Устанавливаем относительное позиционирование для дочерних абсолютных элементов */
+  width: 100%;  /* Занимаем всю доступную ширину */
+}
+
+/* Стили для поля ввода в поисковой форме */
+.search-form input {
+  width: 100%; /* Занимаем всю доступную ширину */
+  padding: 0.5rem 1rem;  /* Внутренние отступы: 0.5rem сверху/снизу, 1rem слева/справа */
+  border: 1px solid var(--gray-light); /* Граница с цветом из CSS-переменной */
+  border-radius: var(--rounded-md) 0 0 var(--rounded-md); /* Скругляем только левые углы */
+  font-size: 0.9rem;  /* Размер шрифта */
+  border-right: none;  /* Убираем правую границу (она будет у кнопки) */
+}
+
+/* Стили для кнопки поиска */
+.search-form button {
+  padding: 0.5rem 1rem; /* Внутренние отступы как у поля ввода */
+  background-color: var(--primary); /* Цвет фона из CSS-переменной */
+  color: white; /* Белый цвет текста */
+  border: none; /* Убираем границу */
+  border-radius: 0 var(--rounded-md) var(--rounded-md) 0;  /* Скругляем только правые углы */
+  cursor: pointer;  /* Курсор в виде указателя при наведении */
+  transition: var(--transition);   /* Плавные переходы для анимации */
+}
+
+/* Стили для кнопки поиска при наведении */
+.search-form button:hover {
+  background-color: var(--primary-dark); /* Темный оттенок основного цвета */
+}
+
+/* Стили для выпадающего списка подсказок */
+.search-suggestions {
+  display: none;  /* Изначально скрываем блок */
+  position: absolute; /* Абсолютное позиционирование относительно search-form */
+  top: 100%;  /* Располагаем под формой */
+  left: 0; /* Выравниваем по левому краю формы */
+  width: 100%;   /* Ширина как у формы */
+  background: white;   /* Белый фон */
+  border: 1px solid var(--gray-light);   /* Граница с цветом из переменной */
+  border-radius: 0 0 var(--rounded-md) var(--rounded-md);   /* Скругляем только нижние углы */ 
+  box-shadow: var(--shadow-md);   /* Тень из переменной */
+  z-index: 100;   /* Устанавливаем высокий z-index чтобы перекрывать другие элементы */
+  max-height: 300px;   /* Максимальная высота перед появлением скролла */
+  overflow-y: auto;   /* Автоматический скролл при переполнении */
+}
+
+/* Стили для элемента подсказки */
+.suggestion-item {
+  padding: 0.75rem 1rem;   /* Внутренние отступы */
+  cursor: pointer;   /* Курсор-указатель */
+  transition: var(--transition);   /* Плавные переходы */
+}
+
+/* Стили для элемента подсказки при наведении */
+.suggestion-item:hover {
+  background-color: rgba(37, 99, 235, 0.1);   /* Слегка прозрачный голубой фон */
+  color: var(--primary);   /* Цвет текста - основной цвет */
+}
+
+/* Адаптивные стили для мобильных устройств (ширина экрана <= 768px) */
+@media (max-width: 768px) {
+  /* Модифицируем поисковую форму */
+  .search-form {
+    margin: 0.5rem 0;     /* Добавляем вертикальные отступы */
+  }
+  
+  /* Модифицируем блок подсказок */
+  .search-suggestions {
+    position: relative;     /* Меняем позиционирование на относительное */
+    top: auto;    /* Сбрасываем позиционирование */
+    left: auto;   /* Сбрасываем позиционирование */
+    width: 100%;  /* Занимаем всю ширину */
+  }
+}
