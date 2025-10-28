@@ -1,0 +1,299 @@
+:root {                                  /* Определение CSS-переменных */
+    --primary: #2563eb;                  /* Основной синий цвет */
+    --primary-dark: #1d4ed8;             /* Темный вариант синего */
+    --secondary: #f59e0b;                /* Оранжевый цвет */
+    --dark: #1e293b;                     /* Темный цвет текста */
+    --light: #f8fafc;                    /* Светлый фон */
+    --gray: #94a3b8;                     /* Серый цвет */
+    --gray-light: #e2e8f0;               /* Светло-серый */
+    --danger: #dc2626;                   /* Красный цвет ошибки */
+    --success: #16a34a;                  /* Зеленый цвет успеха */
+    --rounded: 0.5rem;                   /* Радиус скругления */
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* Тень */
+}
+
+* {                                      /* Сброс стилей для всех элементов */
+    margin: 0;                           /* Обнуление внешних отступов */
+    padding: 0;                          /* Обнуление внутренних отступов */
+    box-sizing: border-box;              /* Границы включаются в ширину */
+}
+
+body {                                   /* Стили для основного контента */
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; /* Шрифты */
+    background-color: #f5f7fa;           /* Цвет фона страницы */
+    color: var(--dark);                  /* Цвет текста */
+    line-height: 1.5;                    /* Межстрочный интервал */
+}
+
+.auth-container {                        /* Контейнер формы авторизации */
+    display: flex;                       /* Flex-разметка */
+    justify-content: center;             /* Центрирование по горизонтали */
+    align-items: center;                 /* Центрирование по вертикали */
+    min-height: 100vh;                   /* Минимальная высота на весь экран */
+    padding: 1rem;                       /* Внутренние отступы */
+}
+
+.auth-wrapper {                          /* Обертка формы */
+    background-color: white;             /* Белый фон */
+    border-radius: var(--rounded);       /* Скругленные углы */
+    box-shadow: var(--shadow);           /* Тень */
+    width: 100%;                        /* Ширина 100% */
+    max-width: 450px;                    /* Максимальная ширина */
+    overflow: hidden;                    /* Скрытие выходящего контента */
+}
+
+.auth-header {                           /* Шапка формы */
+    padding: 2rem 2rem 1rem;             /* Внутренние отступы */
+    text-align: center;                  /* Текст по центру */
+}
+
+.auth-header h2 {                        /* Заголовок */
+    font-size: 1.75rem;                  /* Размер шрифта */
+    font-weight: 700;                    /* Жирность */
+    margin-bottom: 0.5rem;               /* Отступ снизу */
+    color: var(--dark);                  /* Цвет текста */
+}
+
+.auth-header p {                         /* Подзаголовок */
+    color: var(--gray);                  /* Серый цвет */
+    font-size: 0.9rem;                   /* Размер шрифта */
+}
+
+.auth-form {                             /* Основная форма */
+    padding: 1rem 2rem 2rem;             /* Внутренние отступы */
+}
+
+.form-group {                            /* Группа полей */
+    margin-bottom: 1.25rem;              /* Отступ между группами */
+}
+
+.form-group label {                      /* Лейблы полей */
+    display: block;                      /* Блочное отображение */
+    margin-bottom: 0.5rem;               /* Отступ снизу */
+    font-size: 0.9rem;                   /* Размер шрифта */
+    font-weight: 500;                    /* Полужирный */
+    color: var(--dark);                  /* Цвет текста */
+}
+
+.input-with-icon {                       /* Поле с иконкой */
+    position: relative;                  /* Для позиционирования иконки */
+}
+
+.input-with-icon i {                     /* Иконка в поле */
+    position: absolute;                  /* Абсолютное позиционирование */
+    left: 1rem;                          /* Отступ слева */
+    top: 50%;                            /* Позиция по вертикали */
+    transform: translateY(-50%);         /* Точное центрирование */
+    color: var(--gray);                  /* Цвет иконки */
+    font-size: 1rem;                     /* Размер иконки */
+}
+
+.input-with-icon input {                 /* Поле ввода */
+    width: 100%;                         /* Ширина 100% */
+    padding: 0.75rem 1rem 0.75rem 2.5rem; /* Отступы с учетом иконки */
+    border: 1px solid var(--gray-light); /* Граница */
+    border-radius: var(--rounded);       /* Скругленные углы */
+    font-size: 0.95rem;                  /* Размер шрифта */
+    transition: all 0.2s;                /* Плавные переходы */
+}
+
+.input-with-icon input:focus {           /* Поле в фокусе */
+    outline: none;                       /* Убираем контур */
+    border-color: var(--primary);        /* Цвет границы */
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1); /* Тень */
+}
+
+.toggle-password {                       /* Кнопка показа пароля */
+    position: absolute;                  /* Абсолютное позиционирование */
+    right: 1rem;                         /* Отступ справа */
+    top: 50%;                            /* Позиция по вертикали */
+    transform: translateY(-50%);         /* Центрирование */
+    background: none;                    /* Прозрачный фон */
+    border: none;                        /* Без границы */
+    color: var(--gray);                  /* Цвет иконки */
+    cursor: pointer;                     /* Курсор-указатель */
+    font-size: 1rem;                     /* Размер иконки */
+}
+
+.toggle-password:hover {                 /* Кнопка при наведении */
+    color: var(--dark);                  /* Темный цвет */
+}
+
+.form-options {                          /* Дополнительные опции */
+    display: flex;                       /* Flex-разметка */
+    justify-content: space-between;      /* Распределение по ширине */
+    align-items: center;                 /* Выравнивание по центру */
+    margin: 1.5rem 0;                    /* Внешние отступы */
+    font-size: 0.9rem;                   /* Размер шрифта */
+}
+
+.remember-me {                           /* Чекбокс "Запомнить" */
+    display: flex;                       /* Flex-разметка */
+    align-items: center;                 /* Выравнивание по центру */
+    cursor: pointer;                     /* Курсор-указатель */
+}
+
+.remember-me input {                     /* Сам чекбокс */
+    margin-right: 0.5rem;                /* Отступ справа */
+}
+
+.forgot-password {                       /* Ссылка "Забыли пароль" */
+    color: var(--primary);               /* Основной цвет */
+    text-decoration: none;               /* Без подчеркивания */
+    font-weight: 500;                    /* Полужирный */
+}
+
+.forgot-password:hover {                 /* При наведении */
+    text-decoration: underline;          /* Подчеркивание */
+}
+
+.btn-auth {                              /* Кнопка входа */
+    width: 100%;                         /* Ширина 100% */
+    padding: 0.75rem;                    /* Внутренние отступы */
+    background-color: var(--primary);    /* Цвет фона */
+    color: white;                        /* Цвет текста */
+    border: none;                        /* Без границы */
+    border-radius: var(--rounded);       /* Скругленные углы */
+    font-size: 1rem;                     /* Размер шрифта */
+    font-weight: 600;                    /* Жирный */
+    cursor: pointer;                     /* Курсор-указатель */
+    transition: background-color 0.2s;   /* Плавное изменение цвета */
+}
+
+.btn-auth:hover {                        /* Кнопка при наведении */
+    background-color: var(--primary-dark); /* Темный фон */
+}
+
+.auth-divider {                          /* Разделительная линия */
+    position: relative;                  /* Для псевдоэлемента */
+    margin: 1.5rem 0;                    /* Отступы */
+    text-align: center;                  /* Текст по центру */
+}
+
+.auth-divider::before {                  /* Линия */
+    content: "";                         /* Обязательно для псевдоэлемента */
+    position: absolute;                  /* Абсолютное позиционирование */
+    top: 50%;                            /* Позиция по вертикали */
+    left: 0;                             /* Начало слева */
+    right: 0;                            /* Конец справа */
+    height: 1px;                         /* Толщина линии */
+    background-color: var(--gray-light); /* Цвет */
+    z-index: 1;                          /* Уровень слоя */
+}
+
+.auth-divider span {                     /* Текст в разделителе */
+    position: relative;                  /* Для z-index */
+    display: inline-block;               /* Строчно-блочный */
+    padding: 0 1rem;                     /* Отступы */
+    background-color: white;             /* Фон */
+    color: var(--gray);                  /* Цвет текста */
+    font-size: 0.8rem;                   /* Размер шрифта */
+    z-index: 2;                          /* Над линией */
+}
+
+.social-auth {                           /* Социальные кнопки */
+    display: flex;                       /* Flex-разметка */
+    flex-direction: column;              /* Вертикальное расположение */
+    gap: 0.75rem;                        /* Расстояние между кнопками */
+    margin-bottom: 1.5rem;               /* Отступ снизу */
+}
+
+.btn-social {                            /* Кнопки соц. сетей */
+    display: flex;                       /* Flex-разметка */
+    align-items: center;                 /* Выравнивание по центру */
+    justify-content: center;             /* Центрирование по горизонтали */
+    width: 100%;                         /* Ширина 100% */
+    padding: 0.75rem;                    /* Внутренние отступы */
+    border: 1px solid var(--gray-light); /* Граница */
+    border-radius: var(--rounded);       /* Скругленные углы */
+    background-color: white;             /* Фон */
+    color: var(--dark);                  /* Цвет текста */
+    font-size: 0.9rem;                   /* Размер шрифта */
+    font-weight: 500;                    /* Полужирный */
+    cursor: pointer;                     /* Курсор-указатель */
+    transition: all 0.2s;                /* Плавные переходы */
+}
+
+.btn-social i {                          /* Иконки в кнопках */
+    margin-right: 0.5rem;                /* Отступ справа */
+    font-size: 1.1rem;                   /* Размер иконки */
+}
+
+.btn-social.google:hover {               /* Кнопка Google при наведении */
+    background-color: #f8f9fa;           /* Светлый фон */
+    border-color: #dadce0;               /* Цвет границы */
+}
+
+.btn-social.vk {                         /* Кнопка VK */
+    background-color: #0077ff;           /* Синий фон */
+    color: white;                        /* Белый текст */
+    border-color: #0077ff;               /* Синяя граница */
+}
+
+.btn-social.vk:hover {                   /* Кнопка VK при наведении */
+    background-color: #0066dd;           /* Темно-синий фон */
+    border-color: #0066dd;               /* Темно-синяя граница */
+}
+
+.auth-footer {                           /* Подвал формы */
+    text-align: center;                  /* Текст по центру */
+    font-size: 0.9rem;                   /* Размер шрифта */
+    color: var(--gray);                  /* Серый цвет */
+}
+
+.auth-footer a {                         /* Ссылки в подвале */
+    color: var(--primary);               /* Основной цвет */
+    text-decoration: none;               /* Без подчеркивания */
+    font-weight: 500;                    /* Полужирный */
+}
+
+.auth-footer a:hover {                   /* Ссылки при наведении */
+    text-decoration: underline;          /* Подчеркивание */
+}
+
+.password-hint {                         /* Подсказка к паролю */
+    font-size: 0.75rem;                  /* Мелкий шрифт */
+    color: var(--gray);                  /* Серый цвет */
+    margin-top: 0.25rem;                 /* Отступ сверху */
+}
+
+.agree-terms {                           /* Чекбокс согласия */
+    display: flex;                       /* Flex-разметка */
+    align-items: center;                 /* Выравнивание по центру */
+    font-size: 0.85rem;                  /* Размер шрифта */
+    color: var(--gray);                  /* Серый цвет */
+    cursor: pointer;                     /* Курсор-указатель */
+}
+
+.agree-terms input {                     /* Сам чекбокс */
+    margin-right: 0.5rem;                /* Отступ справа */
+}
+
+.agree-terms a {                         /* Ссылка в тексте */
+    color: var(--primary);               /* Основной цвет */
+    text-decoration: none;               /* Без подчеркивания */
+}
+
+.agree-terms a:hover {                   /* Ссылка при наведении */
+    text-decoration: underline;          /* Подчеркивание */
+}
+
+@keyframes fadeIn {                      /* Анимация появления */
+    from { opacity: 0; transform: translateY(10px); } /* Начальное состояние */
+    to { opacity: 1; transform: translateY(0); }      /* Конечное состояние */
+}
+
+.auth-form {                             /* Применение анимации */
+    animation: fadeIn 0.3s ease-out;     /* Название, длительность, функция */
+}
+
+@media (max-width: 480px) {              /* Адаптив для мобильных */
+    .auth-wrapper {                      /* Форма на мобильных */
+        border-radius: 0;                /* Без скругления */
+        box-shadow: none;                /* Без тени */
+    }
+    
+    .auth-header, .auth-form {           /* Отступы на мобильных */
+        padding: 1.5rem 1.5rem 1.5rem;   /* Уменьшенные отступы */
+    }
+}
